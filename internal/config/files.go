@@ -6,9 +6,15 @@ import (
 )
 
 var (
-	CAFile         = configFile("ca.pem")
-	ServerCertFile = configFile("server.pem")
-	ServerKeyFile  = configFile("server-key.pem")
+	CAFile               = configFile("ca.pem")
+	ServerCertFile       = configFile("server.pem")
+	ServerKeyFile        = configFile("server-key.pem")
+	RootClientCertFile   = configFile("root-client.pem")
+	NobodyClientCertFile = configFile("nobody-client.pem")
+	RootClientKeyFile    = configFile("root-client-key.pem")
+	NobodyClientKeyFile  = configFile("nobody-client-key.pem")
+	ACLModeFile          = configFile("model.conf")
+	ACLPolicyFile        = configFile("policy.csv")
 )
 
 func configFile(filename string) string {
