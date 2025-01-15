@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	api "github.com/anemec/proglog/api/v1"
+	"github.com/anemec/proglog/internal/auth"
 	"github.com/anemec/proglog/internal/config"
 	"github.com/anemec/proglog/internal/log"
 	"github.com/stretchr/testify/require"
@@ -99,8 +100,10 @@ func setupTest(t *testing.T, fn func(*Config)) (
 	clog, err := log.NewLog(dir, log.Config{})
 	require.NoError(t, err)
 
+	authorizer := auth.New(config.ACLModeFile, config.ACLPolicyFile)
 	cfg = &Config{
-		CommitLog: clog,
+		CommitLog:  clog,
+		Authorizer: authorizer,
 	}
 	if fn != nil {
 		fn(cfg)
